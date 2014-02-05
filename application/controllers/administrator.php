@@ -8,20 +8,19 @@ class Administrator extends CI_Controller
     {
 
         parent::__construct();
+
+	    //load files
         $this->load->model('administratorlogin');
-        $this->load->helper('url');
-        $this->load->library('session');
         $this->load->model('administratorcategory');
         $this->load->model('student_quiz_desc');
         $this->load->model('model_teacher');
         $this->load->model('adminstuquiz');
         $this->load->model('quiz_metadata');
-
-        $this->load->model('adminquiz');
-
-        $this->load->model('adminquestion');
-
-        $this->load->helper('form');
+	    $this->load->model('adminquiz');
+	    $this->load->model('adminquestion');
+	    $this->load->helper('url');
+	    $this->load->library('session');
+	    $this->load->helper('form');
     }
 
     //for admin login
@@ -96,9 +95,10 @@ class Administrator extends CI_Controller
             $name = isset($_POST['name']) ? $_POST['name'] : '';
             $teacher = isset($_POST['teacher']) ? $_POST['teacher'] : '';
 
-            $data = array('name' => $name,
+            $data = array(
+	            'name' => $name,
                 'teacher' => $teacher
-               );
+                );
 
 
             $this->administratorcategory->insertDatabase('category', $data);
@@ -407,7 +407,7 @@ class Administrator extends CI_Controller
     }
 
 
-    //for delete Category
+    //for delete Student
     public function deletestudentById()
     {
 
@@ -506,7 +506,7 @@ class Administrator extends CI_Controller
       }
 
 
-      //for delete Category
+      //for delete teacher
       public function deleteteacherById()
       {
 
